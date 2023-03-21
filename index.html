@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="archivo.css">
+    <title>HOTEL LAGUNA PERDIDA</title>
+</head>
+<body>
+    <header>
+        <div id="clima"></div>
+        <div>
+            <h1>HOTEL LAGUNA PERDIDA</h1>
+        </div>
+    </header>
+    <main class="seccion1">
+        <div class="titulo">
+            <h3>SIMULADOR COSTO RESERVA</h3>
+        </div>
+        <div class="simular_costo">
+            <form id="simulador">
+                <label for="">Ingrese Tipo de habitacion: individual, doble</label>
+                <input id="tipo_habitacion" type="text"><br><br>
+                <label for="">Ingrese forma de pago: efectivo, transferencia</label>
+                <input id="forma_pago" type="text"><br><br>
+                <button id="calcular">CALCULAR</button>
+            </form>
+        </div>
+    </main>
+    <main class="seccion2">
+        <h3>Sistema de Pre-Reserva Laguna Perdida</h3>
+        <form id="formulario">
+            <label for="">Nombre y Apellido: </label>
+                <input id="nombre_apellido" type="text" /><br /><br />
+            <label for="">Fecha de nacimiento</label>
+                <input id="fecha_nacimiento" type="text" /> <br /><br />
+            <label for="">Número de Documento</label>
+                <input id="reserva_dni" type="text" /><br /><br />
+                <label for="">Indique forma de pago</label>
+                <input id="pago" type="text"><br /><br />
+            <label for="habitacion">Habitación: </label>
+            <select name="habitacion" id="habitacion">
+                <option value="individual">Individual</option>
+                <option value="doble">Doble</option>
+            </select>
+            <button>Pre-Reservar</button>
+        </form>
+        <h3 class="mi_pre_reserva">Ver Mi Pre-Reserva:</h2>
+        <br /><br />
+        <button id="ver_pre_reserva">VER PRE-RESERVA</button>
+        <div id="contenedor_pre_reservas"></div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.14/dist/sweetalert2.all.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
