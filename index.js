@@ -28,7 +28,7 @@ simulador.addEventListener("submit", function(event) {
 });
 
 
-// SE CREA UN CLASE RESERVA Y ARRAY RESERVA. SE CAPTURAN LOS DATOS DE LOS INPUT DEL FORMULARIO DE PRE-RESERVA Y SE GUARDAN EN EL ARRAY.
+// SE CREA UN CLASE RESERVA Y ARRAY RESERVA. SE CAPTURAN LOS DATOS DE LOS INPUT DEL FORMULARIO DE PRE-RESERVA Y SE GUARDAN EN EL ARRAY EN LOCALSTORAGE
 
 class Reserva{
     constructor (nombre_apellido, fecha_nacimiento, num_reserva, pago, habitacion ){
@@ -52,6 +52,8 @@ if (localStorage.getItem('array_reservas')) {
 
 let formulario = document.getElementById("formulario"); //Obtener el elemento del formulario
 
+
+
 formulario.addEventListener("submit", (event) => {
     event.preventDefault(); //Prevenir el comportamiento predeterminado del formulario
     let nombreApellido = document.getElementById("nombre_apellido").value;
@@ -66,31 +68,23 @@ formulario.addEventListener("submit", (event) => {
 });
 
 
-// SE MUESTRAN LOS DATOS INGRESADOS PARA LA PRE-RESERVA
 
-let contenedor_pre_reservas = document.getElementById('contenedor_pre_reservas');
-let ver_pre_reservas = document.getElementById('ver_pre_reserva');
-
-
-function mostrar_pre_reservas() {
+function mostrar_ultima_reserva() {
     contenedor_pre_reservas.innerHTML = '';
-    array_reservas.forEach((reserva) => {
+    let ultima_reserva = array_reservas[array_reservas.length - 1]; // Obtenemos la última reserva del array
     let div = document.createElement('div');
     div.innerHTML = `<div>
-                            <p>Nombre y Apellido: ${reserva.nombre_apellido}</p>
-                            <p>Fecha de nacimiento: ${reserva.fecha_nacimiento}</p>
-                            <p>Número Reserva: ${reserva.num_reserva}</p>
-                            <p> Forma de pago: ${reserva.pago}</p>
-                            <p>Habitación: ${reserva.habitacion}</p>
+                            <p>Nombre y Apellido: ${ultima_reserva.nombre_apellido}</p>
+                            <p>Fecha de nacimiento: ${ultima_reserva.fecha_nacimiento}</p>
+                            <p>Número Reserva: ${ultima_reserva.num_reserva}</p>
+                            <p> Forma de pago: ${ultima_reserva.pago}</p>
+                            <p>Habitación: ${ultima_reserva.habitacion}</p>
                     </div>`;
     contenedor_pre_reservas.appendChild(div);
-    });
 }
 
-
-ver_pre_reservas.addEventListener('click', () => {
-    mostrar_pre_reservas();
-
+ver_pre_reserva.addEventListener('click', () => {
+    mostrar_ultima_reserva(); // Muesstra solo la última reserva
     setTimeout(() => {
         Swal.fire({
             title: "IMPORTANTE",
@@ -100,7 +94,6 @@ ver_pre_reservas.addEventListener('click', () => {
         });
     }, 3000); // retrasa la ejecución del SweetAlert en 3 segundos (3000 ms)
 });
-
 
 
 // API
